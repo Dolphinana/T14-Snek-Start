@@ -50,5 +50,7 @@ private:
 	Snake snake;
 
 	std::mt19937 rng;
+
+	Location delta_loc = { 1,0 };
 	/********************************/
 };

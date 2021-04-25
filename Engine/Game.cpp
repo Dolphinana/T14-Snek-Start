@@ -41,6 +41,27 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		delta_loc = { -1,0 };
+	}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		delta_loc = { 1,0 };
+	}
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		delta_loc = { 0,-1 };
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		delta_loc = { 0,1 };
+	}
+
+	snake.MoveBy(delta_loc);
+
+
+
 }
 
 void Game::ComposeFrame()
@@ -55,4 +76,6 @@ void Game::ComposeFrame()
 			brd.DrawCell(loc, c);
 		}
 	}
+
+	snake.Draw(brd);
 }

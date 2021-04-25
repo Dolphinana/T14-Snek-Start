@@ -23,6 +23,14 @@ void Snake::Grow()
 	}
 }
 
+void Snake::TouchGoal(Goal & goal)
+{
+	if (segments[0].GetX() == goal.loc.x && segments[0].GetX() )
+	{
+		Grow();
+	}
+}
+
 void Snake::Draw(Board & brd)
 {
 	for (int i = 0; i < nSegments; ++i)
@@ -51,6 +59,17 @@ void Snake::Segment::Draw(Board& brd)
 {
 	brd.DrawCell(loc, c);
 }
+
+int Snake::Segment::GetX()
+{
+	return loc.x;
+}
+
+int Snake::Segment::GetY()
+{
+	return loc.y;
+}
+
 
 void Snake::Segment::MoveBy(Location delta_loc)
 {
