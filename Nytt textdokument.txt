@@ -1,0 +1,54 @@
+Add Location class
+create int x and y
+Change from class to struct
+
+Create a Board class
+create static dimension = 20
+create static width and height = 10
+cache a reference to gfx object
+Create a constructor that initializes graphics
+Create DrawCell function pass Location and color 
+Add brd to Game.h and include random num generator
+
+(We need to get width and height from board)
+Make disco fever! (or diSCo sEizUre!!!)
+
+Create Snake class and Segment class inside Snake
+Add location and color into Segment
+
+Create segments array and make it 100
+Create int nSegments = 1
+
+Create Snake constructor that takes location
+Create MoveBy that takes delta_loc
+Create Grow()
+Create Draw that takes brd
+
+We want each segment follow the next segment until it reaches head segment, then head moves in delta_loc
+
+Create Follow that takes Segment& next
+Create Draw segment 
+Create InitHead( location) and InitBody()
+
+Create headColor and bodyColor
+
+In Snake Initializer InitHead with loc
+
+Do the MovyBy
+Add MoveBy in Segment And run segments MoveBy on head
+
+Do the Grow()
+Do the Draw()!!
+
+InitHead in_loc; c = headColor;
+InitHead set color
+
+Follow() loc = next.loc
+
+create Add( Location& val ) in Location
+
+Do the segment moveby using loc.Add
+assert abs[absolute] delta == 1
+
+Do the sgment Draw using brd
+
