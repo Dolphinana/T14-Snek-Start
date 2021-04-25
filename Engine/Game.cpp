@@ -80,4 +80,9 @@ void Game::ComposeFrame()
 
 	snake.Draw(brd);
 	goal.Draw(brd);
+
+	for (int i = 0; i < 99999999; ++i)
+	{
+
+	}
 }

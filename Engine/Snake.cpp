@@ -26,7 +26,7 @@ void Snake::Grow()
 		++nSegments;
 	}
 	Location lol_loc = { 25,25 };
-	segments[nSegments - 1].SetLoc(lol_loc);
+	//segments[nSegments - 1].SetLoc(lol_loc);
 }
 
 void Snake::TouchGoal(Goal & goal)
