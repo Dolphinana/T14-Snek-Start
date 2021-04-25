@@ -8,7 +8,7 @@ Board::Board(Graphics& gfx)
 
 void Board::DrawCell(Location & loc, Color c)
 {
-	gfx.DrawRectDim(loc.x, loc.y, loc.x + dimension, loc.y + dimension, c);
+	gfx.DrawRectDim(loc.x * dimension, loc.y * dimension, dimension, dimension, c);
 }
 
 int Board::GetWidth()
