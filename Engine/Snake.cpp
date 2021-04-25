@@ -21,7 +21,7 @@ void Snake::Grow()
 	{
 		++nSegments;
 	}
-	Location lol_loc = { 15,15 };
+	Location lol_loc = { 25,25 };
 	segments[nSegments - 1].SetLoc(lol_loc);
 }
 
@@ -38,6 +38,7 @@ void Snake::Draw(Board & brd)
 {
 	for (int i = 0; i < nSegments; ++i)
 	{
+		segments[i].InitBody();
 		segments[i].Draw(brd);
 	}
 }
