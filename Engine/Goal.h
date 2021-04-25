@@ -5,7 +5,7 @@
 class Goal
 {
 public:
-	Goal( Location& in_loc );
+	Goal( const Location& in_loc );
 
 	void Draw(Board& brd);
 	Location loc;

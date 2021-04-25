@@ -1,6 +1,6 @@
 #include "Goal.h"
 
-Goal::Goal(Location & in_loc)
+Goal::Goal(const Location & in_loc)
 {
 	loc = in_loc;
 }

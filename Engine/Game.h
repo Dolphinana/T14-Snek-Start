@@ -27,6 +27,7 @@
 #include <random>
 #include "Location.h"
 #include "Snake.h"
+#include "Goal.h"
 
 class Game
 {
@@ -48,9 +49,11 @@ private:
 	/*  User Variables              */
 	Board brd;
 	Snake snake;
+	Goal goal;
 
 	std::mt19937 rng;
 
 	Location delta_loc = { 1,0 };
+
 	/********************************/
 };

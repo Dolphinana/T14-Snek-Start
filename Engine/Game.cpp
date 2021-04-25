@@ -27,7 +27,8 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	brd( gfx ),
 	rng( std::random_device()() ),
-	snake({ 10,10 })
+	snake({ 10,10 }),
+	goal( { 12,12} )
 {
 }
 
@@ -60,7 +61,7 @@ void Game::UpdateModel()
 
 	snake.MoveBy(delta_loc);
 
-
+	//snake.TouchGoal(goal);
 
 }
 
@@ -78,4 +79,5 @@ void Game::ComposeFrame()
 	}
 
 	snake.Draw(brd);
+	goal.Draw(brd);
 }
