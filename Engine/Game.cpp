@@ -59,9 +59,9 @@ void Game::UpdateModel()
 		delta_loc = { 0,1 };
 	}
 
+	snake.TouchGoal(goal);
 	snake.MoveBy(delta_loc);
 
-	//snake.TouchGoal(goal);
 
 }
 

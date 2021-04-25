@@ -21,14 +21,17 @@ void Snake::Grow()
 	{
 		++nSegments;
 	}
+	Location lol_loc = { 15,15 };
+	segments[nSegments - 1].SetLoc(lol_loc);
 }
 
 void Snake::TouchGoal(Goal & goal)
 {
-	if (segments[0].GetX() == goal.loc.x && segments[0].GetX() )
+	if (segments[0].GetX() == goal.loc.x && segments[0].GetY() == goal.loc.y )
 	{
 		Grow();
 	}
+
 }
 
 void Snake::Draw(Board & brd)
@@ -58,6 +61,11 @@ void Snake::Segment::Follow(const Segment & next)
 void Snake::Segment::Draw(Board& brd)
 {
 	brd.DrawCell(loc, c);
+}
+
+void Snake::Segment::SetLoc(Location & in_loc)
+{
+	loc = in_loc;
 }
 
 int Snake::Segment::GetX()
