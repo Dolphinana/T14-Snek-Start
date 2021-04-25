@@ -9,6 +9,8 @@ class Board
 public:
 	Board(Graphics& gfx);
 	void DrawCell(Location& loc, Color c);
+	int GetWidth();
+	int GetHeight();
 private:
 	static constexpr int dimension = 20;
 	static constexpr int width = 10;

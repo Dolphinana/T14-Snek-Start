@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Board.h"
 #include <random>
+#include "Location.h"
 
 class Game
 {
@@ -44,7 +45,7 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	Board& brd;
+	Board brd;
 
 	std::mt19937 rng;
 	/********************************/
