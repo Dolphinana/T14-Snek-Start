@@ -29,11 +29,13 @@ void Snake::Grow()
 	//segments[nSegments - 1].SetLoc(lol_loc);
 }
 
-void Snake::TouchGoal(Goal & goal)
+void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
 {
 	if (segments[0].GetX() == goal.loc.x && segments[0].GetY() == goal.loc.y )
 	{
 		Grow();
+		goal.loc.x = in_x;
+		goal.loc.y = in_y;
 	}
 
 }

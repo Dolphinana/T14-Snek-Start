@@ -29,7 +29,7 @@ public:
 	Snake(const Location& in_loc);
 	void MoveBy(Location& delta_loc);
 	void Grow();
-	void TouchGoal(Goal& goal);
+	void TouchGoal(Goal& goal, int in_x, int in_y);
 	void Draw(Board& brd);
 private:
 	static constexpr Color headColor = Colors::Yellow;
