@@ -1,6 +1,6 @@
 #include "Snake.h"
 
-Snake::Snake(Location & in_loc)
+Snake::Snake(const Location & in_loc)
 {
 	segments[0].InitHead(in_loc);
 }
@@ -42,7 +42,7 @@ void Snake::Segment::InitBody()
 	c = Snake::bodyColor;
 }
 
-void Snake::Segment::Follow(Segment & next)
+void Snake::Segment::Follow(const Segment & next)
 {
 	loc = next.loc;
 }

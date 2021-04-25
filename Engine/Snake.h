@@ -13,7 +13,7 @@ private:
 	public:
 		void InitHead(const Location in_loc);
 		void InitBody();
-		void Follow(Segment& next);
+		void Follow(const Segment& next);
 		void MoveBy(Location delta_loc);
 		void Draw(Board& brd);
 	private:
@@ -22,7 +22,7 @@ private:
 	};
 
 public:
-	Snake(Location& in_loc);
+	Snake(const Location& in_loc);
 	void MoveBy(Location& delta_loc);
 	void Grow();
 	void Draw(Board& brd);

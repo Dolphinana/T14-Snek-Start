@@ -2,7 +2,7 @@
 
 struct Location
 {
-	void Add( Location& val )
+	void Add( const Location& val )
 	{
 		x += val.x;
 		y += val.y;
