@@ -3,6 +3,10 @@
 Snake::Snake(const Location & in_loc)
 {
 	segments[0].InitHead(in_loc);
+	for (int i = 1; i <= nMaxSegments; ++i)
+	{
+		segments[i].InitBody();
+	}
 }
 
 void Snake::MoveBy(Location & delta_loc)
@@ -38,7 +42,6 @@ void Snake::Draw(Board & brd)
 {
 	for (int i = 0; i < nSegments; ++i)
 	{
-		segments[i].InitBody();
 		segments[i].Draw(brd);
 	}
 }
