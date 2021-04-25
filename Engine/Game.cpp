@@ -67,16 +67,16 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	std::uniform_int_distribution<int> colorDist(0, 255);
-	for (int x = 0; x < brd.GetWidth(); ++x)
-	{
-		for (int y = 0; y < brd.GetHeight(); ++y)
-		{
-			Location loc = { x,y };
-			Color c( colorDist(rng), colorDist(rng), colorDist(rng) );
-			brd.DrawCell(loc, c);
-		}
-	}
+	//std::uniform_int_distribution<int> colorDist(0, 255);
+//	for (int x = 0; x < brd.GetWidth(); ++x)
+//	{
+//		for (int y = 0; y < brd.GetHeight(); ++y)
+//		{
+//			Location loc = { x,y };
+//			Color c( colorDist(rng), colorDist(rng), colorDist(rng) );
+//			brd.DrawCell(loc, c);
+//		}
+//	}
 
 	snake.Draw(brd);
 	goal.Draw(brd);
