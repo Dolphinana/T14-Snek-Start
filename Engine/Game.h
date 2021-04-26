@@ -57,5 +57,6 @@ private:
 
 	Location delta_loc = { 1,0 };
 
+	int nTimer = 0;
 	/********************************/
 };

@@ -29,8 +29,8 @@ Game::Game( MainWindow& wnd )
 	rng( std::random_device()() ),
 	snake({ 10,10 }),
 	goal( { 12,12} ),
-	xGoalDist(0, 30),
-	yGoalDist(0, 30)
+	xGoalDist(38, 39),
+	yGoalDist(0, 29)
 {
 }
 
@@ -61,9 +61,16 @@ void Game::UpdateModel()
 		delta_loc = { 0,1 };
 	}
 
-	snake.TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
-	snake.MoveBy(delta_loc );
 
+
+	++nTimer;
+	if (nTimer >= 4)
+	{
+		nTimer = 0;
+		snake.TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
+		snake.MoveBy(delta_loc );
+
+	}
 
 }
 
@@ -83,8 +90,4 @@ void Game::ComposeFrame()
 	snake.Draw(brd);
 	goal.Draw(brd);
 
-	for (int i = 0; i < 99999999; ++i)
-	{
-
-	}
 }
