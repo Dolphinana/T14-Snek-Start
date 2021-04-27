@@ -64,15 +64,16 @@ void Game::UpdateModel()
 
 
 	++nTimer;
-	if (nTimer >= 4)
+	if (nTimer >= 16)
 	{
 		nTimer = 0;
-		snake.TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
 
 		if (!snake.TouchWall())
 		{
 			snake.MoveBy(delta_loc );
 		}
+
+		snake.TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
 
 	}
 

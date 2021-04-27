@@ -25,8 +25,7 @@ void Snake::Grow()
 	{
 		++nSegments;
 	}
-	Location lol_loc = { 25,25 };
-	//segments[nSegments - 1].SetLoc(lol_loc);
+	segments[nSegments - 1].SetLoc({ 10,10 });
 }
 
 void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
@@ -81,7 +80,7 @@ void Snake::Segment::Draw(Board& brd)
 	brd.DrawCell(loc, c);
 }
 
-void Snake::Segment::SetLoc(Location & in_loc)
+void Snake::Segment::SetLoc(const Location & in_loc)
 {
 	loc = in_loc;
 }

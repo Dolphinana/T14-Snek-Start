@@ -17,7 +17,7 @@ private:
 		void Follow(const Segment& next);
 		void MoveBy(Location delta_loc);
 		void Draw(Board& brd);
-		void SetLoc(Location& in_loc);
+		void SetLoc( const Location& in_loc);
 		int GetX();
 		int GetY();
 	private:
