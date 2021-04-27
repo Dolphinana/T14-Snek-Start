@@ -3,7 +3,7 @@
 Snake::Snake(const Location & in_loc)
 	:
 	rng( std::random_device()() ),
-	xGoalDist(38, 39),
+	xGoalDist(0, 39),
 	yGoalDist(0, 29)
 {
 	segments[0].InitHead(in_loc);
