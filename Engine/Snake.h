@@ -5,6 +5,8 @@
 #include "Board.h"
 #include "assert.h"
 #include "Goal.h"
+#include "MainWindow.h"
+#include <random>
 
 class Snake
 {
@@ -26,7 +28,11 @@ private:
 	};
 
 public:
+	std::mt19937 rng;
+	std::uniform_int_distribution<int> xGoalDist;
+	std::uniform_int_distribution<int> yGoalDist;
 	Snake(const Location& in_loc);
+	void Update(const MainWindow& wnd, Goal& goal);
 	void MoveBy(Location& delta_loc);
 	void Grow();
 	void TouchGoal(Goal& goal, int in_x, int in_y);
@@ -38,4 +44,9 @@ private:
 	static constexpr int nMaxSegments = 100;
 	Segment segments[nMaxSegments];
 	int nSegments = 1;
+
+	Location out_delta_loc;
+	Location direction;
+	
+	int nTimer = 0;
 };

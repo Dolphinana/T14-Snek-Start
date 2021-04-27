@@ -1,22 +1,63 @@
 #include "Snake.h"
 
 Snake::Snake(const Location & in_loc)
+	:
+	rng( std::random_device()() ),
+	xGoalDist(38, 39),
+	yGoalDist(0, 29)
 {
 	segments[0].InitHead(in_loc);
 	for (int i = 1; i <= nMaxSegments; ++i)
 	{
 		segments[i].InitBody();
 	}
+
+	direction = { 1,0 };
+}
+
+void Snake::Update(const MainWindow & wnd, Goal& goal)
+{
+	if (wnd.kbd.KeyIsPressed(VK_LEFT) && out_delta_loc.x != 1)
+	{
+		out_delta_loc = { -1,0 };
+	}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT) && out_delta_loc.x != -1)
+	{
+		out_delta_loc = { 1,0 };
+	}
+	if (wnd.kbd.KeyIsPressed(VK_UP) && out_delta_loc.y != 1)
+	{
+		out_delta_loc = { 0,-1 };
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN) && out_delta_loc.y != -1)
+	{
+		out_delta_loc = { 0,1 };
+	}
+
+
+	++nTimer;
+	if (nTimer >= 8)
+	{
+		nTimer = 0;
+		MoveBy(out_delta_loc);
+		TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
+	}
+
 }
 
 void Snake::MoveBy(Location & delta_loc)
 {
-	for (int i = nSegments - 1; i > 0; --i)
-	{
-		segments[i].Follow(segments[ i - 1 ]);
-	}
  
-	segments[0].MoveBy(delta_loc);
+	direction = delta_loc;
+	if (!TouchWall())
+	{
+		for (int i = nSegments - 1; i > 0; --i)
+		{
+			segments[i].Follow(segments[ i - 1 ]);
+		}
+		segments[0].MoveBy(delta_loc);
+	}
+
 }
 
 void Snake::Grow()
@@ -41,7 +82,7 @@ void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
 
 bool Snake::TouchWall()
 {
-	if (segments[0].GetX() <= 0 || segments[0].GetY() <= 0 || segments[0].GetX() >= 39 || segments[0].GetY() >= 29)
+	if (segments[0].GetX() <= 0 || segments[0].GetY() <= 0 || (segments[0].GetX() + direction.x > 39 ) || (segments[0].GetY() + direction.y > 29   ) )
 	{
 		return true;
 	}
@@ -49,6 +90,7 @@ bool Snake::TouchWall()
 	{
 		return false;
 	}
+
 }
 
 void Snake::Draw(Board & brd)

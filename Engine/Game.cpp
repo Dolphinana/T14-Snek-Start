@@ -28,9 +28,7 @@ Game::Game( MainWindow& wnd )
 	brd( gfx ),
 	rng( std::random_device()() ),
 	snake({ 10,10 }),
-	goal( { 12,12} ),
-	xGoalDist(38, 39),
-	yGoalDist(0, 29)
+	goal( { 12,12} )
 {
 }
 
@@ -44,38 +42,8 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
-	{
-		delta_loc = { -1,0 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-	{
-		delta_loc = { 1,0 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_UP))
-	{
-		delta_loc = { 0,-1 };
-	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-	{
-		delta_loc = { 0,1 };
-	}
 
-
-
-	++nTimer;
-	if (nTimer >= 16)
-	{
-		nTimer = 0;
-
-		if (!snake.TouchWall())
-		{
-			snake.MoveBy(delta_loc );
-		}
-
-		snake.TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
-
-	}
+	snake.Update(wnd, goal);
 
 }
 

@@ -52,11 +52,8 @@ private:
 	Goal goal;
 
 	std::mt19937 rng;
-	std::uniform_int_distribution<int> xGoalDist;
-	std::uniform_int_distribution<int> yGoalDist;
 
 	Location delta_loc = { 1,0 };
 
-	int nTimer = 0;
 	/********************************/
 };
