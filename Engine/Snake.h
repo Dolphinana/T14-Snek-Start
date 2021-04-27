@@ -30,6 +30,7 @@ public:
 	void MoveBy(Location& delta_loc);
 	void Grow();
 	void TouchGoal(Goal& goal, int in_x, int in_y);
+	bool TouchWall();
 	void Draw(Board& brd);
 private:
 	static constexpr Color headColor = Colors::Yellow;

@@ -68,7 +68,11 @@ void Game::UpdateModel()
 	{
 		nTimer = 0;
 		snake.TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
-		snake.MoveBy(delta_loc );
+
+		if (!snake.TouchWall())
+		{
+			snake.MoveBy(delta_loc );
+		}
 
 	}
 

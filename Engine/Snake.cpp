@@ -40,6 +40,18 @@ void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
 
 }
 
+bool Snake::TouchWall()
+{
+	if (segments[0].GetX() <= 0 || segments[0].GetY() <= 0 || segments[0].GetX() >= 39 || segments[0].GetY() >= 29)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void Snake::Draw(Board & brd)
 {
 	for (int i = 0; i < nSegments; ++i)
