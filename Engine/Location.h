@@ -7,6 +7,11 @@ struct Location
 		x += val.x;
 		y += val.y;
 	}
+	void Subtract( const Location& val )
+	{
+		x -= val.x;
+		y -= val.y;
+	}
 	int x;
 	int y;
 };
