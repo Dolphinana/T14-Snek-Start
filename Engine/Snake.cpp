@@ -101,7 +101,7 @@ void Snake::WrapScreen()
 	{
 		segments[0].SetLoc({Board::boardWidth, segments[0].GetY() });
 	}
-	if (segments[0].GetX() + direction.x > Board::boardWidth)
+	if (segments[0].GetX() + direction.x > Board::boardWidth + 1)
 	{
 		segments[0].SetLoc({0,segments[0].GetY()});
 	}
@@ -109,7 +109,7 @@ void Snake::WrapScreen()
 	{
 		segments[0].SetLoc({segments[0].GetX(), Board::boardHeight});
 	}
-	if (segments[0].GetY() + direction.y > 29)
+	if (segments[0].GetY() + direction.y > Board::boardHeight + 1)
 	{
 		segments[0].SetLoc({segments[0].GetX(), 0 });
 	}
