@@ -11,6 +11,9 @@ public:
 	void DrawCell(Location& loc, Color c);
 	int GetWidth();
 	int GetHeight();
+
+	static constexpr int boardWidth = 39;
+	static constexpr int boardHeight = 29;
 private:
 	static constexpr int dimension = 20;
 	static constexpr int width = 10;

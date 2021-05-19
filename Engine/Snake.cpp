@@ -41,6 +41,7 @@ void Snake::Update(const MainWindow & wnd, Goal& goal)
 		nTimer = 0;
 		MoveBy(out_delta_loc);
 		TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
+		WrapScreen();
 	}
 
 }
@@ -48,8 +49,9 @@ void Snake::Update(const MainWindow & wnd, Goal& goal)
 void Snake::MoveBy(Location & delta_loc)
 {
  
-	direction = delta_loc;
-	if (!TouchWall())
+	if ( (abs(delta_loc.x) + abs(delta_loc.y) != 0) ) {direction = delta_loc;}
+	
+	//if (!TouchWall())
 	{
 		for (int i = nSegments - 1; i > 0; --i)
 		{
@@ -90,6 +92,28 @@ bool Snake::TouchWall()
 	{
 		return false;
 	}
+
+}
+
+void Snake::WrapScreen()
+{
+	if (segments[0].GetX() < 0)
+	{
+		segments[0].SetLoc({Board::boardWidth, segments[0].GetY() });
+	}
+	if (segments[0].GetX() + direction.x > Board::boardWidth)
+	{
+		segments[0].SetLoc({0,segments[0].GetY()});
+	}
+	if (segments[0].GetY() < 0)
+	{
+		segments[0].SetLoc({segments[0].GetX(), Board::boardHeight});
+	}
+	if (segments[0].GetY() + direction.y > 29)
+	{
+		segments[0].SetLoc({segments[0].GetX(), 0 });
+	}
+
 
 }
 
@@ -140,6 +164,6 @@ int Snake::Segment::GetY()
 
 void Snake::Segment::MoveBy(Location delta_loc)
 {
-	assert(abs(delta_loc.x) + abs(delta_loc.y) == 1);
+	//assert(abs(delta_loc.x) + abs(delta_loc.y) == 1);
 	loc.Add(delta_loc);
 }
