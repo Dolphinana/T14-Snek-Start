@@ -42,7 +42,7 @@ public:
 private:
 	static constexpr Color headColor = Colors::Yellow;
 	static constexpr Color bodyColor = Colors::Green;
-	static constexpr int nMaxSegments = 100;
+	static constexpr int nMaxSegments = 3;
 	Segment segments[nMaxSegments];
 	int nSegments = 1;
 

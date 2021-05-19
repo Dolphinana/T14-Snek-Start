@@ -67,8 +67,8 @@ void Snake::Grow()
 	if (nSegments < nMaxSegments)
 	{
 		++nSegments;
+		segments[nSegments - 1].SetLoc({ segments[nSegments - 2].GetX(),segments[nSegments - 2].GetY() });
 	}
-	segments[nSegments - 1].SetLoc({ segments[nSegments - 2].GetX(),segments[nSegments - 2].GetY() });
 }
 
 void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
