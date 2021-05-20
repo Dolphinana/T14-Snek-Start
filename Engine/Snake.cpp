@@ -139,7 +139,7 @@ bool Snake::HitSegment()
 {
 	for (int i = 1; i < nSegments; ++i)
 	{
-		if (segments[0].GetLoc().x + direction.x == segments[i].GetLoc().x && segments[0].GetLoc().y + direction.y == segments[i].GetLoc().y)
+		if (segments[0].GetLoc().x + out_delta_loc.x == segments[i].GetLoc().x && segments[0].GetLoc().y + out_delta_loc.y == segments[i].GetLoc().y)
 		{
 			return true;
 		}
