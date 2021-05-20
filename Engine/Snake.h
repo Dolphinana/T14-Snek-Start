@@ -35,7 +35,7 @@ public:
 	void Update(Goal& goal);
 	void MoveBy(Location& delta_loc);
 	void Grow();
-	void TouchGoal(Goal& goal, int in_x, int in_y);
+	void TouchGoal(Goal& goal);
 	bool TouchWall();
 	void WrapScreen();
 	void Draw(Board& brd);

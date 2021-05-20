@@ -49,7 +49,7 @@ void Snake::Update(Goal& goal)
 			nTimer = 0;
 			MoveBy(out_delta_loc);
 			WrapScreen();
-			TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
+			TouchGoal(goal);
 		}
 		else { for (int i = 0; i < nSegments; ++i) { segments[i].GameOver(); } }
 	}
@@ -81,13 +81,13 @@ void Snake::Grow()
 	}
 }
 
-void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
+void Snake::TouchGoal(Goal& goal)
 {
 	if (segments[0].GetLoc().x == goal.loc.x && segments[0].GetLoc().y == goal.loc.y )
 	{
 		Grow();
-		goal.loc.x = in_x;
-		goal.loc.y = in_y;
+		goal.loc.x = xGoalDist(rng);
+		goal.loc.y = yGoalDist(rng);
 	}
 
 }
