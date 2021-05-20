@@ -31,8 +31,8 @@ public:
 	std::mt19937 rng;
 	std::uniform_int_distribution<int> xGoalDist;
 	std::uniform_int_distribution<int> yGoalDist;
-	Snake(const Location& in_loc);
-	void Update(const MainWindow& wnd, Goal& goal);
+	Snake(const Location& in_loc, const MainWindow& in_wnd);
+	void Update(Goal& goal);
 	void MoveBy(Location& delta_loc);
 	void Grow();
 	void TouchGoal(Goal& goal, int in_x, int in_y);
@@ -48,6 +48,7 @@ private:
 
 	Location out_delta_loc;
 	Location direction;
+	const MainWindow& wnd;
 	
 	int nTimer = 0;
 };

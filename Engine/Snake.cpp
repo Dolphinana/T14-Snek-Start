@@ -1,7 +1,8 @@
 #include "Snake.h"
 
-Snake::Snake(const Location & in_loc)
+Snake::Snake(const Location & in_loc, const MainWindow& in_wnd)
 	:
+	wnd( in_wnd ),
 	rng( std::random_device()() ),
 	xGoalDist(0, 39),
 	yGoalDist(0, 29)
@@ -15,7 +16,7 @@ Snake::Snake(const Location & in_loc)
 	direction = { 1,0 };
 }
 
-void Snake::Update(const MainWindow & wnd, Goal& goal)
+void Snake::Update(Goal& goal)
 {
 	if (wnd.kbd.KeyIsPressed(VK_LEFT) && out_delta_loc.x != 1)
 	{

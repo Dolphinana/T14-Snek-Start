@@ -27,7 +27,7 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	brd( gfx ),
 	rng( std::random_device()() ),
-	snake({ 10,10 }),
+	snake({ 10,10 }, wnd),
 	goal( { 12,12} )
 {
 }
@@ -42,9 +42,7 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-
-	snake.Update(wnd, goal);
-
+	snake.Update(goal);
 }
 
 void Game::ComposeFrame()
