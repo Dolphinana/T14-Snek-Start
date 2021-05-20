@@ -18,21 +18,25 @@ Snake::Snake(const Location & in_loc, const MainWindow& in_wnd)
 
 void Snake::Update(Goal& goal)
 {
-	if (wnd.kbd.KeyIsPressed(VK_LEFT) && out_delta_loc.x != 1)
+	if (wnd.kbd.KeyIsPressed(VK_LEFT) && out_delta_loc.x != 1 && !keyPressed)
 	{
 		out_delta_loc = { -1,0 };
+		keyPressed = true;
 	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT) && out_delta_loc.x != -1)
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT) && out_delta_loc.x != -1 && !keyPressed)
 	{
 		out_delta_loc = { 1,0 };
+		keyPressed = true;
 	}
-	if (wnd.kbd.KeyIsPressed(VK_UP) && out_delta_loc.y != 1)
+	if (wnd.kbd.KeyIsPressed(VK_UP) && out_delta_loc.y != 1 && !keyPressed)
 	{
 		out_delta_loc = { 0,-1 };
+		keyPressed = true;
 	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN) && out_delta_loc.y != -1)
+	if (wnd.kbd.KeyIsPressed(VK_DOWN) && out_delta_loc.y != -1 && !keyPressed)
 	{
 		out_delta_loc = { 0,1 };
+		keyPressed = true;
 	}
 
 
@@ -41,6 +45,7 @@ void Snake::Update(Goal& goal)
 	{
 		if (!HitSegment() )
 		{
+			keyPressed = false;
 			nTimer = 0;
 			MoveBy(out_delta_loc);
 			WrapScreen();

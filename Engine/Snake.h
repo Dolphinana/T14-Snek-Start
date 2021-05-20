@@ -51,4 +51,5 @@ private:
 	const MainWindow& wnd;
 	int nTimer = 0;
 	bool gameOver = false;
+	bool keyPressed = false;
 };
