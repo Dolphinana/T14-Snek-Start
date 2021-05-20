@@ -86,8 +86,21 @@ void Snake::TouchGoal(Goal& goal)
 	if (segments[0].GetLoc().x == goal.loc.x && segments[0].GetLoc().y == goal.loc.y )
 	{
 		Grow();
+
 		goal.loc.x = xGoalDist(rng);
 		goal.loc.y = yGoalDist(rng);
+
+		for (int i = 0; i < nSegments; ++i)
+		{
+			if (segments[i].GetLoc().x == goal.loc.x && segments[i].GetLoc().y == goal.loc.y )
+			{
+				goal.loc.x = xGoalDist(rng);
+				goal.loc.y = yGoalDist(rng);
+				i = 0;
+			}
+		}
+
+
 	}
 
 }
