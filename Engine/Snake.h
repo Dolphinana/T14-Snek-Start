@@ -21,8 +21,7 @@ private:
 		void MoveBy(Location delta_loc);
 		void Draw(Board& brd);
 		void SetLoc( const Location& in_loc);
-		int GetX();
-		int GetY();
+		Location GetLoc();
 	private:
 		Location loc;
 		Color c;

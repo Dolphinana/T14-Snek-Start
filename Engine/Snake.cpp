@@ -72,13 +72,13 @@ void Snake::Grow()
 	if (nSegments < nMaxSegments)
 	{
 		++nSegments;
-		segments[nSegments - 1].SetLoc({ segments[nSegments - 2].GetX(),segments[nSegments - 2].GetY() });
+		segments[nSegments - 1].SetLoc({ segments[nSegments - 2].GetLoc().x,segments[nSegments - 2].GetLoc().y });
 	}
 }
 
 void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
 {
-	if (segments[0].GetX() == goal.loc.x && segments[0].GetY() == goal.loc.y )
+	if (segments[0].GetLoc().x == goal.loc.x && segments[0].GetLoc().y == goal.loc.y )
 	{
 		Grow();
 		goal.loc.x = in_x;
@@ -89,7 +89,7 @@ void Snake::TouchGoal(Goal & goal, int in_x, int in_y)
 
 bool Snake::TouchWall()
 {
-	if (segments[0].GetX() <= 0 || segments[0].GetY() <= 0 || (segments[0].GetX() + direction.x > 39 ) || (segments[0].GetY() + direction.y > 29   ) )
+	if (segments[0].GetLoc().x <= 0 || segments[0].GetLoc().y <= 0 || (segments[0].GetLoc().x + direction.x > 39 ) || (segments[0].GetLoc().y + direction.y > 29   ) )
 	{
 		return true;
 	}
@@ -102,21 +102,21 @@ bool Snake::TouchWall()
 
 void Snake::WrapScreen()
 {
-	if (segments[0].GetX() < 0)
+	if (segments[0].GetLoc().x < 0)
 	{
-		segments[0].SetLoc({Board::boardWidth, segments[0].GetY() });
+		segments[0].SetLoc({Board::boardWidth, segments[0].GetLoc().y });
 	}
-	if (segments[0].GetX() + direction.x > Board::boardWidth + 1)
+	if (segments[0].GetLoc().x + direction.x > Board::boardWidth + 1)
 	{
-		segments[0].SetLoc({0,segments[0].GetY()});
+		segments[0].SetLoc({0,segments[0].GetLoc().y});
 	}
-	if (segments[0].GetY() < 0)
+	if (segments[0].GetLoc().y < 0)
 	{
-		segments[0].SetLoc({segments[0].GetX(), Board::boardHeight});
+		segments[0].SetLoc({segments[0].GetLoc().x, Board::boardHeight});
 	}
-	if (segments[0].GetY() + direction.y > Board::boardHeight + 1)
+	if (segments[0].GetLoc().y + direction.y > Board::boardHeight + 1)
 	{
-		segments[0].SetLoc({segments[0].GetX(), 0 });
+		segments[0].SetLoc({segments[0].GetLoc().x, 0 });
 	}
 
 
@@ -134,7 +134,7 @@ bool Snake::HitSegment()
 {
 	for (int i = 1; i < nSegments; ++i)
 	{
-		if (segments[0].GetX() + direction.x == segments[i].GetX() && segments[0].GetY() + direction.y == segments[i].GetY())
+		if (segments[0].GetLoc().x + direction.x == segments[i].GetLoc().x && segments[0].GetLoc().y + direction.y == segments[i].GetLoc().y)
 		{
 			return true;
 		}
@@ -174,16 +174,10 @@ void Snake::Segment::SetLoc(const Location & in_loc)
 	loc = in_loc;
 }
 
-int Snake::Segment::GetX()
+Location Snake::Segment::GetLoc()
 {
-	return loc.x;
+	return loc;
 }
-
-int Snake::Segment::GetY()
-{
-	return loc.y;
-}
-
 
 void Snake::Segment::MoveBy(Location delta_loc)
 {
