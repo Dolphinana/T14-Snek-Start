@@ -46,7 +46,7 @@ private:
 	Segment segments[nMaxSegments];
 	int nSegments = 1;
 
-	Location out_delta_loc;
+	Location out_delta_loc = {1,0};
 	Location direction;
 	const MainWindow& wnd;
 	

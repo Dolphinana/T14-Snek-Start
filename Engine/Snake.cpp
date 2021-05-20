@@ -8,12 +8,12 @@ Snake::Snake(const Location & in_loc, const MainWindow& in_wnd)
 	yGoalDist(0, 29)
 {
 	segments[0].InitHead(in_loc);
-	for (int i = 1; i <= nMaxSegments; ++i)
+	for (int i = 1; i < nMaxSegments; ++i)
 	{
 		segments[i].InitBody();
 	}
 
-	direction = { 1,0 };
+	direction = out_delta_loc;
 }
 
 void Snake::Update(Goal& goal)
