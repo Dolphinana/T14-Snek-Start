@@ -39,10 +39,11 @@ public:
 	bool TouchWall();
 	void WrapScreen();
 	void Draw(Board& brd);
+	bool HitSegment();
 private:
 	static constexpr Color headColor = Colors::Yellow;
 	static constexpr Color bodyColor = Colors::Green;
-	static constexpr int nMaxSegments = 3;
+	static constexpr int nMaxSegments = 400;
 	Segment segments[nMaxSegments];
 	int nSegments = 1;
 

@@ -5,7 +5,7 @@ Snake::Snake(const Location & in_loc, const MainWindow& in_wnd)
 	wnd( in_wnd ),
 	rng( std::random_device()() ),
 	xGoalDist(0, 39),
-	yGoalDist(28, 29)
+	yGoalDist(0, 29)
 {
 	segments[0].InitHead(in_loc);
 	for (int i = 1; i < nMaxSegments; ++i)
@@ -37,7 +37,7 @@ void Snake::Update(Goal& goal)
 
 
 	++nTimer;
-	if (nTimer >= 8)
+	if (nTimer >= 8 && !HitSegment())
 	{
 		nTimer = 0;
 		MoveBy(out_delta_loc);
@@ -124,6 +124,19 @@ void Snake::Draw(Board & brd)
 	{
 		segments[i].Draw(brd);
 	}
+}
+
+bool Snake::HitSegment()
+{
+	for (int i = 1; i < nSegments; ++i)
+	{
+		if (segments[0].GetX() + direction.x == segments[i].GetX() && segments[0].GetY() + direction.y == segments[i].GetY())
+		{
+			return true;
+		}
+	}
+	return false;
+
 }
 
 void Snake::Segment::InitHead(const Location in_loc)
