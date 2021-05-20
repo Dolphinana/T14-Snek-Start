@@ -51,7 +51,7 @@ void Snake::Update(Goal& goal)
 			WrapScreen();
 			TouchGoal(goal);
 		}
-		else { for (int i = 0; i < nSegments; ++i) { segments[i].GameOver(); } }
+		else { for (int i = 0; i < nSegments; ++i) { segments[i].GameOver(); keyPressed = true;} }
 	}
 
 }
