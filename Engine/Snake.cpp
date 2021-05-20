@@ -37,12 +37,16 @@ void Snake::Update(Goal& goal)
 
 
 	++nTimer;
-	if (nTimer >= 8 && !HitSegment())
+	if (nTimer >= 8 )
 	{
-		nTimer = 0;
-		MoveBy(out_delta_loc);
-		WrapScreen();
-		TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
+		if (!HitSegment() )
+		{
+			nTimer = 0;
+			MoveBy(out_delta_loc);
+			WrapScreen();
+			TouchGoal(goal, xGoalDist(rng), yGoalDist(rng));
+		}
+		else { for (int i = 0; i < nSegments; ++i) { segments[i].GameOver(); } }
 	}
 
 }
@@ -148,6 +152,11 @@ void Snake::Segment::InitHead(const Location in_loc)
 void Snake::Segment::InitBody()
 {
 	c = Snake::bodyColor;
+}
+
+void Snake::Segment::GameOver()
+{
+	c = {255,0,00};
 }
 
 void Snake::Segment::Follow(const Segment & next)

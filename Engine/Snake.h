@@ -16,6 +16,7 @@ private:
 	public:
 		void InitHead(const Location in_loc);
 		void InitBody();
+		void GameOver();
 		void Follow(const Segment& next);
 		void MoveBy(Location delta_loc);
 		void Draw(Board& brd);
@@ -46,10 +47,9 @@ private:
 	static constexpr int nMaxSegments = 400;
 	Segment segments[nMaxSegments];
 	int nSegments = 1;
-
 	Location out_delta_loc = {1,0};
 	Location direction;
 	const MainWindow& wnd;
-	
 	int nTimer = 0;
+	bool gameOver = false;
 };
