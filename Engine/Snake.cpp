@@ -40,8 +40,6 @@ void Snake::Update(Goal& goal)
 	}
 
 
-	snakeSpeedRate = nSegments * 0.5f;
-
 
 	++nTimer;
 	if (nTimer >= snakeSpeedRate)
