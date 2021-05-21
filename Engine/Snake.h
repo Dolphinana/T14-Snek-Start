@@ -53,5 +53,5 @@ private:
 	bool gameOver = false;
 	bool keyPressed = false;
 
-	int snakeSpeedRate = 8;
+	int snakeSpeedRate = 18;
 };
