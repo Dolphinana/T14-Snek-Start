@@ -42,7 +42,15 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	snake.Update(goal);
+	if (wnd.kbd.KeyIsPressed(VK_RETURN))
+	{
+		titleScreen = false;
+	}
+
+	if (!titleScreen)
+	{
+		snake.Update(goal);
+	}
 }
 
 void Game::ComposeFrame()
@@ -60,5 +68,10 @@ void Game::ComposeFrame()
 
 	snake.Draw(brd);
 	goal.Draw(brd);
+
+	if (titleScreen)
+	{
+		SpriteCodex::DrawTitle(300,225,gfx);
+	}
 
 }

@@ -28,6 +28,7 @@
 #include "Location.h"
 #include "Snake.h"
 #include "Goal.h"
+#include "SpriteCodex.h"
 
 class Game
 {
@@ -50,10 +51,9 @@ private:
 	Board brd;
 	Snake snake;
 	Goal goal;
-
 	std::mt19937 rng;
-
 	Location delta_loc = { 1,0 };
+	bool titleScreen = true;
 
 	/********************************/
 };
