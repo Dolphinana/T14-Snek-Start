@@ -27,7 +27,7 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	brd( gfx ),
 	rng( std::random_device()() ),
-	snake({ 10,10 }, wnd),
+	snek({ 10,10 }, wnd),
 	goal( { 12,12} )
 {
 }
@@ -49,7 +49,7 @@ void Game::UpdateModel()
 
 	if (!titleScreen)
 	{
-		snake.Update(goal);
+		snek.Update(goal);
 	}
 }
 
@@ -66,7 +66,7 @@ void Game::ComposeFrame()
 //		}
 //	}
 
-	snake.Draw(brd);
+	snek.Draw(brd);
 	goal.Draw(brd);
 
 	if (titleScreen)

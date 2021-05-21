@@ -49,7 +49,7 @@ private:
 	/********************************/
 	/*  User Variables              */
 	Board brd;
-	Snake snake;
+	Snake snek;
 	Goal goal;
 	std::mt19937 rng;
 	Location delta_loc = { 1,0 };
