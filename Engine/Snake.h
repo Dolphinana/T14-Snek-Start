@@ -52,4 +52,6 @@ private:
 	int nTimer = 0;
 	bool gameOver = false;
 	bool keyPressed = false;
+
+	int snakeSpeedRate = 10;
 };

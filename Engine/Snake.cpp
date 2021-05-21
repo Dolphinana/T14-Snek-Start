@@ -41,7 +41,7 @@ void Snake::Update(Goal& goal)
 
 
 	++nTimer;
-	if (nTimer >= 8 )
+	if (nTimer >= snakeSpeedRate)
 	{
 		if (!HitSegment() )
 		{
