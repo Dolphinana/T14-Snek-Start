@@ -5,12 +5,14 @@ Snake::Snake(const Location & in_loc, const MainWindow& in_wnd)
 	wnd( in_wnd ),
 	rng( std::random_device()() ),
 	xGoalDist(0, 39),
-	yGoalDist(0, 29)
+	yGoalDist(0, 29),
+	greenColorDist(100,255)
 {
 	segments[0].InitHead(in_loc);
 	for (int i = 1; i < nMaxSegments; ++i)
 	{
-		segments[i].InitBody();
+		
+		segments[i].InitBody( greenColorDist(rng) );
 	}
 
 	direction = out_delta_loc;
@@ -168,9 +170,10 @@ void Snake::Segment::InitHead(const Location in_loc)
 	c = Snake::headColor;
 }
 
-void Snake::Segment::InitBody()
+void Snake::Segment::InitBody(unsigned char randomGreen)
 {
-	c = Snake::bodyColor;
+	//const int cg = randomGreen;
+	c = {0, randomGreen, 0};
 }
 
 void Snake::Segment::GameOver()

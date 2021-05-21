@@ -15,7 +15,7 @@ private:
 	{
 	public:
 		void InitHead(const Location in_loc);
-		void InitBody();
+		void InitBody(unsigned char randomGreen);
 		void GameOver();
 		void Follow(const Segment& next);
 		void MoveBy(Location delta_loc);
@@ -31,6 +31,7 @@ public:
 	std::mt19937 rng;
 	std::uniform_int_distribution<int> xGoalDist;
 	std::uniform_int_distribution<int> yGoalDist;
+	std::uniform_int_distribution<int> greenColorDist;
 	Snake(const Location& in_loc, const MainWindow& in_wnd);
 	void Update(Goal& goal);
 	void MoveBy(Location& delta_loc);
@@ -53,5 +54,5 @@ private:
 	bool gameOver = false;
 	bool keyPressed = false;
 
-	int snakeSpeedRate = 18;
+	int snakeSpeedRate = 8;
 };
